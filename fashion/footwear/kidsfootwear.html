@@ -1,0 +1,152 @@
+{% extends 'base.html' %} {% block content %}
+<main>
+  <div class="container">
+    <!--Navbar-->
+    
+    <nav class="
+        navbar navbar-expand-lg navbar-dark
+        bg-dark
+        mt-3
+        mb-5
+      " style="padding-top: 50px;
+font-weight: 580">
+      <!-- Navbar brand -->
+      <span class="navbar-brand">Categories:</span>
+
+      <!-- Collapse button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#basicExampleNav"
+        aria-controls="basicExampleNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbardrop"
+              data-toggle="dropdown"
+            >
+              Garments
+            </a>
+
+            
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'malegarment'%}">Male</a>
+              <a class="dropdown-item" href="{% url 'femalegarment'%}">Female</a>
+              <a class="dropdown-item" href="{% url 'boysgarment'%}">Boys</a>
+              <a class="dropdown-item" href="{% url 'girlsgarment'%}">Girls</a>
+              <a class="dropdown-item" href="{% url 'dummystand'%}">Dummy & Stand</a
+              >
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbardrop"
+              data-toggle="dropdown"
+            >
+              Footwear
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'malefootwear'%}">Male</a>
+              <a class="dropdown-item" href="{% url 'femalefootwear'%}">Female</a>
+              <a class="dropdown-item" href="{% url 'boysfootwear'%}">Boys</a>
+              <a class="dropdown-item" href="{% url 'girlsfootwear'%}">Girls</a>
+              <a class="dropdown-item" href="{% url 'kidsfootwear'%}">Kids</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbardrop"
+              data-toggle="dropdown"
+            >
+              Accesories
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'jwellery' %}"
+                >Artificial Jwellery & Bangles</a
+              >
+              <a class="dropdown-item" href="{% url 'watches'%}">Watches</a>
+              <a class="dropdown-item" href="{% url 'belt'%}">Belt</a>
+              <a class="dropdown-item" href="{% url 'wallet'%}"
+                >Wallet & Purse</a
+              >
+              <a class="dropdown-item" href="{% url 'google'%}">Google</a>
+              <a class="dropdown-item" href="{% url 'seagenable'%}"
+                >Seagenable Item</a
+              >
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbardrop"
+              data-toggle="dropdown"
+            >
+              Personal Care
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'perfume'%}">Perfume</a>
+              <a class="dropdown-item" href="{% url 'cosmetics'%}">Cosmetics</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+           <a href="{% url 'fashion' %}"" class="nav-link">All</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Collapsible content -->
+    </nav>
+    <!--/.Navbar-->
+    <div class="container">
+      <div class="row">
+        {%for product in products%}
+       {% if product.category == 'footwear' %}
+        {% if product.sub_category == 'kids' or product.sub_category == 'kid' %}
+        <div
+          class="col-sm-6 col-lg-4 d-flex align-items-stretch text-center overflow-auto"
+          style="
+            width: 18rem;
+            margin-top: 50px;
+          "
+        >
+           <div class="card text-white " style="background:#4d4d4d; max-width: 18rem;">
+            <img
+              style="width: 100%; height: 15vw; object-fit: cover"
+              class="card-img-top"
+              src="{{product.img.url}}"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p style = "color: #ffffff" class="card-text">{{product.description}}</p>
+              <!-- <a href="#" class="btn btn-primary">Read More!</a> -->
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+<!--Main layout-->
+
+{% endblock content %}
